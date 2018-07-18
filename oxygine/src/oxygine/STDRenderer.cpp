@@ -583,7 +583,7 @@ namespace oxygine
         addVertices(v, sizeof(v));
     }
 
-
+    
     void STDRenderer::setShaderFlags(unsigned int flags)
     {
         ShaderProgram* sp = _uberShader->getShaderProgram(_baseShaderFlags | flags);
@@ -603,6 +603,13 @@ namespace oxygine
         _verticesData.clear();
     }
 
+    void STDRenderer::flushIndexes()
+    {
+	_driver->draw(IVideoDriver::PT_TRIANGLES, _vdecl,
+		&_verticesData.front(), (unsigned int)_verticesData.size());
+
+	_verticesData.clear();
+    }
 
     void STDRenderer::setUberShaderProgram(UberShaderProgram* pr)
     {

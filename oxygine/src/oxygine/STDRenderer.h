@@ -106,6 +106,7 @@ namespace oxygine
 
         /**Draws existing batch immediately.*/
         void flush();
+	void flushIndexes();
 
         virtual void addVertices(const void* data, unsigned int size);
 
